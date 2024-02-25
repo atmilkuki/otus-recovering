@@ -1,0 +1,28 @@
+#!/bin/bash
+
+curdate=$(date +"%Y-%m-%d")
+stamp=$(date +"%Y-%m-%d_%H-%M-%S")
+
+bkpdir='/home/user/backup'
+
+MYSQL='mysql --skip-column-names'
+
+mkdir $bkpdir/$curdate
+cd $bkpdir/$curdate
+
+echo $stamp mysql backup > backup.info
+tar -cf $stamp.tar backup.info
+
+$MYSQL -e "stop replica;"
+
+for i in `$MYSQL -e "show databases;"`;
+ do
+  for j in `$MYSQL -e "show tables from $i;"`;
+   do
+    /usr/bin/mysqldump $i $j --add-drop-table --triggers --events --routines --source-data=2 > $j.sql
+    tar -rf $stamp.tar $j.sql
+    rm $j.sql
+   done
+ done
+
+$MYSQL -e "start replica"
