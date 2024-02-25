@@ -7,5 +7,5 @@ network:
         - to: default
           via: 10.0.2.1
       nameservers:
-        addresses: [127.0.0.53]
+        addresses: [8.8.8.8, 4.4.4.4]
   version: 2
