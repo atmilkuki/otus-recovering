@@ -3,7 +3,7 @@
 curdate=$(date +"%Y-%m-%d")
 stamp=$(date +"%Y-%m-%d_%H-%M-%S")
 
-bkpdir='/home/user/backup'
+bkpdir='/home/atmilkuki/backup'
 
 MYSQL='mysql --skip-column-names'
 
