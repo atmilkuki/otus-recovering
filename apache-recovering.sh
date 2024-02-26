@@ -14,8 +14,10 @@ service apache2 restart
 #Installing and configuring MySQL server
 apt install mysql-server -y
 systemctl enable mysql.service
-cp ./apache-mysql-config /etc/mysql-somewhere
-#commands to create user for replica
+cp /etc/mysql/mysql.conf.d/mysqld.conf /etc/mysql/mysql.conf.d/mysqld.conf.bak
+cp ./apache-mysql-config /etc/mysql/mysql.conf.d/mysqld.conf
+mysql --execute="create user replica@'10.0.2.22' identified if 'caching_sha2_password' BY 'OtuS2024SuetiN';"
+mysql --execute="grant replication slave on *.* to replica@'10.0.2.22';"
 
 #Installing and configuring agents
 apt install prometheus-node-exporter prometheus-apache-exporter prometheus-mysqld-exporter
