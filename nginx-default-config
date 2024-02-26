@@ -1,6 +1,6 @@
 upstream backend {
-        server 10.0.2.21:80;
-        server 10.0.2.22:80;
+        server 10.0.2.21:8080;
+        server 10.0.2.22:8080;
 }
 
 server {
