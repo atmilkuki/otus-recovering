@@ -8,7 +8,6 @@ netplan apply
 #Installing and configurin Nginx
 apt install nginx -y
 systemctl enable nginx.service
-cp /etc/nginx/sites-enabled/default /etc/nginx/sites-enabled/default.bak
 cp ./nginx-default-config /etc/nginx/sites-enabled/default
 service nginx restart
 
