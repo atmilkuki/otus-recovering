@@ -5,7 +5,7 @@ cp /etc/netplan/00-installer-config.yaml /etc/netplan/00-installer-config.yaml.b
 cp ./nginx-network /etc/netplan/00-installer-config.yaml
 netplan apply
 
-#Installing and configurin Nginx
+#Installing and configuring Nginx
 apt install nginx -y
 systemctl enable nginx.service
 cp ./nginx-default-config /etc/nginx/sites-enabled/default
